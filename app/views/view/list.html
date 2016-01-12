@@ -1,0 +1,89 @@
+<ol class="breadcrumb" >
+  <li ng-repeat="nav in navigation">{{nav.title}}</li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="form-group form-inline">
+            <div class="col-md-10">
+                <label>主题</label>&nbsp;&nbsp;
+                <select class="form-control" ng-model="searchform.theme" 
+                  ng-options="theme.theme as theme.theme_name for theme in themearr"
+                >
+                  <option value=""> --全部-- </option>
+                </select>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <label>关键字</label>&nbsp;&nbsp;
+                <input type="text" class="form-control" ng-model="searchform.keyword" >
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <label>状态</label>&nbsp;&nbsp;
+                <select class="form-control" ng-model="searchform.state" >
+                  <option value=""> --全部-- </option>
+                  <option value="1"> 启用 </option>
+                  <option value="0"> 停用 </option>
+                </select>
+                 &nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-default" ng-click="load()">立即搜索</button>
+            </div>
+            <div class="col-md-2 text-right">
+                <button type="button" class="btn btn-info" ng-click="create()">发布新景区</button>
+            </div>
+        </div>
+    </div>
+</div><!-- searchArea -->
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th class="col-md-2 text-center">主题</th>
+      <th class="text-center">景区名称</th>
+      <th class="text-center col-md-2">排序</th>
+      <th class="col-md-1 text-center">状态</th>
+      <th class="col-md-2 text-center">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="obj in objs">
+      <td class="text-center">{{obj.theme_name}}</td>
+      <td>{{obj.name}}</td>
+      <td class="col-md-2 ">
+          <!-- <form class="form-inline">
+            <div class="form-group">
+              <input class="form-control input-sm" type="text" value="{{obj.asort}}" >
+            </div>
+            <a ng-click="asort(obj.code)" class="btn btn-primary btn-xs">排序</a> 
+          </form>   --> 
+
+          <!-- <input class="form-control input-sm col-md-6" type="text" value="{{obj.asort}}" >
+          <a ng-click="asort(obj.code)" class="btn btn-primary btn-xs col-md-6">排序</a>  -->
+          
+      </td>
+      <td class="text-center">{{obj._state}}</td>
+      <td class="text-center">
+          <a ng-show="obj.state=='0'" ng-click="start(obj.code)" class="btn btn-primary btn-xs">启用</a>
+          <a ng-show="obj.state=='1'" ng-click="stop(obj.code)"  class="btn btn-success btn-xs">停用</a>
+          <a ng-show="obj.state=='0'" ng-href="#view/edit/{{obj.code}}" class="btn btn-warning btn-xs">编辑</a>
+
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="text-right">
+    <pagination items-per-page="itemsPerPage" 
+                total-items="bigTotalItems" 
+                ng-model="bigCurrentPage" 
+                max-size="maxSize" 
+                class="pagination-sm" 
+                boundary-links="true" 
+                rotate="false" 
+                num-pages="numPages" 
+                previous-text="上一页"
+                next-text="下一页"
+                first-text="首页"
+                last-text="末页"
+                ng-change="load()"></pagination>
+</div>

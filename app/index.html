@@ -40,13 +40,11 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
 
-            <li><a href="#">Link</a></li>
-
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 门票 <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
+                <li><a href="#/ticket/search">查询票码</a></li>
+                <li><a href="#/ticket/list">列表</a></li>
                 <li><a href="#">Something else here</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="#">Separated link</a></li>
@@ -81,10 +79,19 @@
               </ul>
             </li>
 
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 景区 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#/view/list">列表</a></li>
+              </ul>
+            </li>
+
           </ul>
 
+          <a href="manager/logout" class="btn btn-danger navbar-btn navbar-right">Sign out</a>
 
         </div><!-- /.navbar-collapse -->
+
       </div><!-- /.container-fluid -->
     </nav>
 
@@ -121,13 +128,32 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+
+    <script src="scripts/controllers/main.js"></script>
+
+    <!-- 服务 -->
+    <script src="scripts/services/common.js"></script>
+    <script src="scripts/services/line.js"></script>
+    <script src="scripts/services/ticket.js"></script>
+    <script src="scripts/services/view.js"></script>
+
+    <script src="scripts/services/httpinjector.js"></script>
+
+    <!-- 票务控制器 -->
+    <script src="scripts/controllers/ticket/list.js"></script>
+
+    <!-- 景区控制器 -->
+    <script src="scripts/controllers/view/list.js"></script>
+    <script src="scripts/controllers/view/create.js"></script>
+    <script src="scripts/controllers/view/info.js"></script>
+    
+    <!-- endbuild -->
 </body>
 </html>

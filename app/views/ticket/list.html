@@ -1,0 +1,69 @@
+<ol class="breadcrumb">
+  <li>门票</li>
+  <li>列表</li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="form-group form-inline">
+            <div class="col-md-10">
+                <label>景区</label>&nbsp;&nbsp;
+                <select class="form-control" ng-model="searchform.view" >
+                  <option value=""> --全部-- </option>
+                </select>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <label>关键字</label>&nbsp;&nbsp;
+                <input type="text" class="form-control" ng-model="searchform.keyword" >
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <label>状态</label>&nbsp;&nbsp;
+                <select class="form-control" ng-model="searchform.state" >
+                  <option value=""> --全部-- </option>
+                  <option value="1"> 启用 </option>
+                  <option value="0"> 停用 </option>
+                </select>
+                 &nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-default search" ng-click="load()">立即搜索</button>
+            </div>
+            <div class="col-md-2 text-right">
+                <button type="button" class="btn btn-info new" ng-click="createline()">发布新票种</button>
+            </div>
+        </div>
+    </div>
+</div><!-- searchArea -->
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th class="col-md-2 text-center">主题</th>
+      <th class="text-center">景区名称</th>
+      <th class="col-md-1 text-center">状态</th>
+      <th class="col-md-2 text-center">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-center">Mark</td>
+      <td>Otto</td>
+      <td class="text-center">@mdo</td>
+      <td class="text-center">Otto</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="text-right">
+    <pagination items-per-page="itemsPerPage" 
+                total-items="bigTotalItems" 
+                ng-model="bigCurrentPage" 
+                max-size="maxSize" 
+                class="pagination-sm" 
+                boundary-links="true" 
+                rotate="false" 
+                num-pages="numPages" 
+                previous-text="上一页"
+                next-text="下一页"
+                first-text="首页"
+                last-text="末页"
+                ng-change="load()"></pagination>
+</div>
