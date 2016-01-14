@@ -11,9 +11,23 @@ angular.module('saApp').controller('LinefreeorderCtrl', function ($scope, list) 
 	];
 
 	$scope.obj = {};
+	
 
 
+	list.get({}, function(res){
 
+     	console.log(res);
+
+     	if(res.errcode !== 0)
+     	{
+     		alert("数据获取失败");
+     		return;
+     	}
+
+     	$scope.objs = res.data.results;
+        $scope.bigTotalItems = res.data.totalRecord;
+
+    });
 
 
 
