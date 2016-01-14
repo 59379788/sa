@@ -56,7 +56,7 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 线路 <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
+                <li><a href="#/line/freelist">公益游</a></li>
                 <li><a href="#">Another action</a></li>
                 <li><a href="#">Something else here</a></li>
                 <li role="separator" class="divider"></li>
@@ -86,9 +86,18 @@
               </ul>
             </li>
 
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 订单 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#/view/list">公益游订单</a></li>
+              </ul>
+            </li>
+
           </ul>
 
-          <a href="manager/logout" class="btn btn-danger navbar-btn navbar-right">Sign out</a>
+          <a href="manager/logout" class="btn btn-danger navbar-btn navbar-right">
+            Sign out
+          </a>
 
         </div><!-- /.navbar-collapse -->
 
@@ -143,17 +152,25 @@
     <script src="scripts/services/line.js"></script>
     <script src="scripts/services/ticket.js"></script>
     <script src="scripts/services/view.js"></script>
+    <script src="scripts/services/order.js"></script>
 
     <script src="scripts/services/httpinjector.js"></script>
 
     <!-- 票务控制器 -->
     <script src="scripts/controllers/ticket/list.js"></script>
+    <script src="scripts/controllers/ticket/create.js"></script>
+    <script src="scripts/controllers/ticket/info.js"></script>
 
     <!-- 景区控制器 -->
     <script src="scripts/controllers/view/list.js"></script>
     <script src="scripts/controllers/view/create.js"></script>
     <script src="scripts/controllers/view/info.js"></script>
-    
+
+    <!-- 线路控制器 -->
+    <script src="scripts/controllers/line/freelist.js"></script>
+    <script src="scripts/controllers/line/freecreate.js"></script>
+    <script src="scripts/controllers/line/freeinfo.js"></script>
+    <script src="scripts/controllers/line/freeorder.js"></script>
     <!-- endbuild -->
 </body>
 </html>

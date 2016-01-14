@@ -1,29 +1,15 @@
 'use strict';
 
 
-angular.module('saApp').controller('ViewlistCtrl', 
-	function ($scope, $location, list, theme, start, stop) {
+angular.module('saApp').controller('LinefreelistCtrl', 
+	function ($scope, $location, list, start, stop) {
 
 	$scope.navigation = [
-		{title : "景区"},
-		{title : "列表"}
+		{title : "线路"},
+		{title : "公益游"}
 	];
 
 	$scope.searchform = {};
-
-	/* 主题
-     * ========================================= */
-	theme().then(function(res) {
-        console.log(res);
-        if(res.errcode === 0)
-        {
-        	$scope.themearr = res.data;
-        }
-        else
-        {
-            alert("主题加载失败");
-        }
-    });
     
     /* 分页
      * ========================================= */
@@ -39,6 +25,8 @@ angular.module('saApp').controller('ViewlistCtrl',
         };
 
         para = angular.extend($scope.searchform, para);
+
+        console.log(para);
         
         list.save(para, function(res){
 
@@ -63,7 +51,7 @@ angular.module('saApp').controller('ViewlistCtrl',
      * ========================================= */
     $scope.create = function(){
 
-    	$location.path("/view/create");
+    	$location.path("/line/freecreate");
 
     };
 
@@ -71,7 +59,7 @@ angular.module('saApp').controller('ViewlistCtrl',
      * ========================================= */
     $scope.start = function(code){
         
-        if (confirm("启用该景区后将不能编辑，确定要启用吗 ？ ")) {
+        if (confirm("启用该活动将不能编辑，确定要启用吗 ？ ")) {
             start.get({code:code}, function(res){
             	console.log(res);
                 if(res.errcode === 0){
@@ -88,8 +76,9 @@ angular.module('saApp').controller('ViewlistCtrl',
      * ========================================= */
     $scope.stop = function(code){
         
-        if (confirm("停用该景区后将不能卖票，确定要停用吗 ？ ")) {
+        if (confirm("停用该活动不能报名，确定要停用吗 ？ ")) {
             stop.get({code:code}, function(res){
+                console.log(res);
                 if(res.errcode === 0){
                     $scope.load();
                 }

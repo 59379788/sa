@@ -8,7 +8,9 @@
         <div class="form-group form-inline">
             <div class="col-md-10">
                 <label>景区</label>&nbsp;&nbsp;
-                <select class="form-control" ng-model="searchform.view" >
+                <select class="form-control" ng-model="searchform.view" 
+                  ng-options="view.code as view.name for view in viewarr"
+                >
                   <option value=""> --全部-- </option>
                 </select>
                 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -25,28 +27,56 @@
                 <button type="button" class="btn btn-default search" ng-click="load()">立即搜索</button>
             </div>
             <div class="col-md-2 text-right">
-                <button type="button" class="btn btn-info new" ng-click="createline()">发布新票种</button>
+                <button type="button" class="btn btn-info new" ng-click="create()">发布新票种</button>
             </div>
         </div>
     </div>
 </div><!-- searchArea -->
 
 
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Panel heading</div>
+
+  <!-- Table -->
+  <table class="table">
+    ...
+  </table>
+  
+</div>
+
+
+
+
+
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th class="col-md-2 text-center">主题</th>
-      <th class="text-center">景区名称</th>
+      <th class="text-center">票种名称</th>
+      <th class="col-md-1 text-center">市场价格</th>
+      <th class="col-md-1 text-center">居游价格</th>
+      <th class="col-md-1 text-center">成本价(散)</th>
+      <th class="col-md-1 text-center">成本价(团)</th>
+      <th class="col-md-1 text-center">排序</th>
       <th class="col-md-1 text-center">状态</th>
       <th class="col-md-2 text-center">操作</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td class="text-center">Mark</td>
-      <td>Otto</td>
-      <td class="text-center">@mdo</td>
-      <td class="text-center">Otto</td>
+    <tr ng-repeat="obj in objs">
+      <td>{{obj.name}}</td>
+      <td class="text-center">{{obj.market_price}}</td>
+      <td class="text-center">{{obj.guide_price}}</td>
+      <td class="text-center">{{obj.cost_price_visitor}}</td>
+      <td class="text-center">{{obj.cost_price_group}}</td>
+      <td class="text-center">{{obj.asort}}</td>
+      <td class="text-center">{{obj._state}}</td>
+      <td class="text-center">
+        <a ng-show="obj.state=='0'" ng-click="start(obj.code)" class="btn btn-primary btn-xs">启用</a>
+          <a ng-show="obj.state=='1'" ng-click="stop(obj.code)"  class="btn btn-success btn-xs">停用</a>
+          <a ng-show="obj.state=='0'" ng-href="#view/edit/{{obj.code}}" class="btn btn-warning btn-xs">编辑</a>
+      </td>
     </tr>
   </tbody>
 </table>

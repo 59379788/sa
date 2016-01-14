@@ -1,0 +1,93 @@
+<ol class="breadcrumb" >
+  <li ng-repeat="nav in navigation">{{nav.title}}</li>
+</ol>
+
+
+<div class="col-md-8 form-horizontal mt10">
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">景区</label>
+        <div class="col-md-10">
+            <select class="form-control" ng-model="obj.view" 
+              ng-options="view.code as view.name for view in viewarr"
+            >
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">票种名称</label>
+        <div class="col-md-10">
+            <input type="text" class="form-control" ng-model="obj.name" placeholder="必填" required>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">有效期</label>
+        <div class="col-md-10">
+            <input type="text" class="form-control" ng-model="obj.period">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">最大购票数</label>
+        <div class="col-md-10">
+            <input type="text" class="form-control" ng-model="obj.max_sell">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">预订说明</label>
+        <div class="col-md-10">
+            <textarea class="form-control" rows="2" ng-model="obj.book_info"></textarea>
+        </div>
+    </div>
+
+
+    <button type="button" class="btn btn-primary btn-lg btn-block">提交吧！黄同学</button>
+
+	
+</div>
+<div class="col-md-4 mt10">
+	
+	<div class="form-horizontal">
+		<div class="form-group">
+	        <label class="col-md-4 control-label">市场价格</label>
+	        <div class="col-md-8">
+	            <input type="text" class="form-control" ng-model="obj.market_price">
+	        </div>
+	    </div>
+	    <div class="form-group">
+	    	<label class="col-md-4 control-label">居游价格</label>
+	        <div class="col-md-8">
+	            <input type="text" class="form-control" ng-model="obj.guide_price">
+	        </div>
+	    </div>
+	    <div class="form-group">
+	    	<label class="col-md-4 control-label">成本价（散）</label>
+	        <div class="col-md-8">
+	            <input type="text" class="form-control" ng-model="obj.cost_price_visitor">
+	        </div>
+	    </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">成本价（团）</label>
+            <div class="col-md-8">
+                <input type="text" class="form-control" ng-model="obj.cost_price_group">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">补贴</label>
+            <div class="col-md-8">
+                <input type="text" class="form-control" ng-model="obj.subsidy">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">返利</label>
+            <div class="col-md-8">
+                <input type="text" class="form-control" ng-model="obj.rebate">
+            </div>
+        </div>
+    </div>
+
+</div>
+
