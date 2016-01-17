@@ -8,19 +8,16 @@
  * Factory in the saApp.
  */
 angular.module('saApp')
-  .factory('order', function ($resource, zidong, $q, $http) {
+  .factory('order', function ($resource, zidong, shoudong, $q, $http) {
 
   	//公益游订单列表
-    var freelist = zidong + "ac/wealfare/adminlist";
+    var freelist = zidong + "ac/wealfareorder/adminlist";
 
-    //新建公益游
-    // var freecreate = zidong + "ac/wealfare/admincreat";
+    //启用公益游订单
+    //var freestart = shoudong + "ac/wealfareService/adminadd";
 
-    // //启用公益游
-    // var freestart = zidong + "ac/wealfare/adminstart";
-
-    // //停用公益游
-    // var freestop = zidong + "ac/wealfare/adminstop";
+    //取消公益游订单
+    var freecancel = shoudong + "ac/wealfareService/admincancel";
 
     
     
@@ -31,17 +28,10 @@ angular.module('saApp')
 
     	flist : function(){
             return $resource(freelist, {}, {});
+        },
+        fcancel : function(){
+        	return $resource(freecancel, {}, {});
         }
-        // ,
-        // fcreate : function(){
-        // 	return $resource(freecreate, {}, {});
-        // },
-        // fstart : function(){
-        // 	return $resource(freestart, {}, {});
-        // },
-        // fstop : function(){
-        // 	return $resource(freestop, {}, {});
-        // }
       
     };
 

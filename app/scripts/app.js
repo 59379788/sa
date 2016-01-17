@@ -137,6 +137,9 @@ angular
         resolve:{
             list : function(order){
                 return order.flist();
+            },
+            cancel : function(order){
+                return order.fcancel();
             }
         }
       })

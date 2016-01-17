@@ -1,3 +1,34 @@
 <ol class="breadcrumb" >
   <li ng-repeat="nav in navigation">{{nav.title}}</li>
 </ol>
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th class="col-md-1 text-center">姓名</th>
+      <th class="col-md-2 text-center">身份证</th>
+      <th class="col-md-1 text-center">电话</th>
+      <th class="col-md-2 text-center">下单时间</th>
+      <th class="col-md-1 text-center">支付状态</th>
+      <th class="text-center">备注</th>
+      <th class="col-md-1 text-center">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="obj in objs">
+      <td class="text-center">{{obj.name}}</td>
+      <td class="text-center">{{obj.cardno}}</td>
+      <td class="text-center">{{obj.tel}}</td>
+      <td class="text-center">{{obj.create_time}}</td>
+      <td class="text-center">{{obj._state}}</td>
+      <td class="text-center">{{obj.note}}</td>
+      <td class="text-center">
+          <a
+           ng-show="obj.del_flg=='0'" ng-click="cancel(obj.out_trade_no, obj.aid, obj.uid)"  class="btn btn-success btn-xs">取消</a>
+
+          <span ng-show="obj.del_flg=='1'">已取消</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
