@@ -50,7 +50,7 @@ angular.module('saApp').controller('actHalfinfoCtrl',
 
     $scope.gogo = function(){
 
-        edit.save($scope.obj, function(res){
+        edit.save({id : code}, $scope.obj, function(res){
 
             console.log(res);
 
