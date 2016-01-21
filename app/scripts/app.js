@@ -58,9 +58,42 @@ angular
             },
             create : function(ticket){
                 return ticket.create();
+            },
+            getDate : function(common){
+                return common.getDate;
             }
         }
       })
+
+      //修改票种
+      .when('/ticket/edit/:typecode', {
+        templateUrl: 'views/ticket/info.html',
+        controller: 'TicketinfoCtrl',
+        controllerAs: 'ticketinfo',
+        resolve : {
+
+            view : function(view){
+                return view.slist;
+            },
+            info : function(ticket){
+                return ticket.info();
+            },
+            edit : function(ticket){
+                return ticket.edit();
+            },
+            type : function(){
+                  return "edit";
+            },
+            getDate : function(common){
+                return common.getDate;
+            },
+            getDateObj : function(common){
+                return common.getDateObj;
+            }
+            
+        }
+      })
+
 
       //景区列表
       .when('/view/list', {
@@ -123,6 +156,9 @@ angular
         controller: 'LinefreecreateCtrl',
         controllerAs: 'linefreecreate',
         resolve:{
+            view : function(view){
+                return view.slist;
+            },
             create : function(line){
                 return line.fcreate();
             }
@@ -141,6 +177,71 @@ angular
             cancel : function(order){
                 return order.fcancel();
             }
+        }
+      })
+
+
+
+
+      //半价游活动
+      .when('/activity/half/list', {
+        templateUrl: 'views/activity/half/list.html',
+        controller: 'actHalfListCtrl',
+        controllerAs: 'acthalflist',
+        resolve:{
+            list : function(activity){
+                return activity.halflist();
+            },
+            start : function(activity){
+                return activity.halfstart();
+            },
+            stop : function(activity){
+                return activity.halfstop();
+            }
+        }
+      })
+
+
+      //半价游活动
+      .when('/activity/half/create', {
+        templateUrl: 'views/activity/half/info.html',
+        controller: 'actHalfCreateCtrl',
+        controllerAs: 'acthalfcreate',
+        resolve:{
+            model : function(activity){
+                return activity.half;
+            },
+            create : function(activity){
+                return activity.halfcreate();
+            },
+            list : function(ticket)
+            {
+                return ticket.list();
+            }
+        }
+      })
+
+      //修改票种
+      .when('/activity/half/edit/:code', {
+        templateUrl: 'views/activity/half/info.html',
+        controller: 'actHalfinfoCtrl',
+        controllerAs: 'acthalfinfo',
+        resolve : {
+
+            
+            info : function(activity){
+                return activity.halfinfo();
+            },
+            edit : function(activity){
+                return activity.halfedit();
+            },
+            list : function(ticket){
+                return ticket.list();
+            },
+            type : function(){
+                  return "edit";
+            }
+            
         }
       })
 

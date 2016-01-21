@@ -56,7 +56,7 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 线路 <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#/line/freelist">公益游</a></li>
+                
                 <li><a href="#">Another action</a></li>
                 <li><a href="#">Something else here</a></li>
                 <li role="separator" class="divider"></li>
@@ -67,7 +67,7 @@
             </li>
 
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 旅行社 <span class="caret"></span></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 旅行社 <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
@@ -87,9 +87,10 @@
             </li>
 
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 订单 <span class="caret"></span></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 活动 <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#/view/list">公益游订单</a></li>
+                <li><a href="#/line/freelist">公益游</a></li>
+                <li><a href="#/activity/half/list"> 半价游 </a></li>
               </ul>
             </li>
 
@@ -153,6 +154,7 @@
     <script src="scripts/services/ticket.js"></script>
     <script src="scripts/services/view.js"></script>
     <script src="scripts/services/order.js"></script>
+    <script src="scripts/services/activity.js"></script>
 
     <script src="scripts/services/httpinjector.js"></script>
 
@@ -171,6 +173,16 @@
     <script src="scripts/controllers/line/freecreate.js"></script>
     <script src="scripts/controllers/line/freeinfo.js"></script>
     <script src="scripts/controllers/line/freeorder.js"></script>
+
+    <!-- 活动控制器 -->
+
+    <!-- 半价游控制器 -->
+    <script src="scripts/controllers/activity/half/list.js"></script>
+    <script src="scripts/controllers/activity/half/info.js"></script>
+    <script src="scripts/controllers/activity/half/create.js"></script>
+    <!-- 半价游控制器 -->
+
+    <!-- 活动控制器 -->
     <!-- endbuild -->
 </body>
 </html>

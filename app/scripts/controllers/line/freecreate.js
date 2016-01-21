@@ -1,7 +1,8 @@
 'use strict';
 
 
-angular.module('saApp').controller('LinefreecreateCtrl', function ($scope, create) {
+angular.module('saApp').controller('LinefreecreateCtrl', 
+    function ($scope, create, view) {
 
 	
 	$scope.navigation = [
@@ -10,10 +11,7 @@ angular.module('saApp').controller('LinefreecreateCtrl', function ($scope, creat
 		{title : "新建公益游"}
 	];
 
-	$scope.obj = {};
-
-
-
+	
 
 
 

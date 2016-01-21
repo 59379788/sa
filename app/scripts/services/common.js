@@ -30,7 +30,25 @@ angular.module('saApp')
 				deferred.reject(data);   // 声明执行失败，即服务器返回错误  
 			});  
 			return deferred.promise;   // 返回承诺，这里并不是最终数据，而是访问最终数据的API 
-	    }
+	    },
+	    getDate : function(d){
+        	return d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
+    	},
+    	getDateObj : function(d){
+
+    		var regEx = new RegExp("\\-","gi");
+    		d=d.replace(regEx,"/");
+    		alert(d);
+    		var milliseconds=Date.parse(d);
+		    alert(milliseconds)
+		    var dependedDate=new Date();
+		    dependedDate.setTime(milliseconds);
+
+		    alert(dependedDate);
+
+		    return dependedDate;
+
+    	}
 
 	};
 
