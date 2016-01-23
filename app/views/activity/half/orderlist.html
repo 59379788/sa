@@ -36,32 +36,26 @@
 <table class="table table-bordered">
   <thead>
     <tr>
+      <th class="col-md-2 text-center">下单时间</th>
       <th class="text-center">半价产品名称</th>
-      <th class="col-md-1 text-center ">类别</th>
-      <th class="col-md-1 text-center">立减</th>
-      <th class="col-md-1 text-center">反补</th>
-      <th class="col-md-1 text-center">价格</th>
-      <th class="col-md-1 text-center">状态</th>
-      <th class="col-md-1 text-center">关联编码</th>
-      <th class="col-md-2 text-center">操作</th>
+      <th class="col-md-1 text-center">用户号</th>
+      <th class="col-md-1 text-center">游客姓名</th>
+      <th class="col-md-1 text-center">电话</th>
+      <th class="col-md-1 text-center">身份证</th>
+      <th class="col-md-1 text-center">最高立减</th>
+      <th class="col-md-1 text-center">实际立减</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="obj in objs">
+      <td class="text-center">{{obj.dtime}}</td>
       <td>{{obj.title}}</td>
-      <td class="text-center">{{obj.type}}</td>
+      <td class="text-center">{{obj.user_code}}</td>
+      <td class="text-center">{{obj.name}}</td>
+      <td class="text-center">{{obj.mobile}}</td>
+      <td class="text-center">{{obj.cardno}}</td>
       <td class="text-center">{{obj.minus}}</td>
-      <td class="text-center">{{obj.subsidy}}</td>
-      <td class="text-center">{{obj.price}}</td>
-      <td class="text-center">{{obj._state}}</td>
-      <td class="text-center">{{obj.code}}</td>
-      <td class="text-center">
-          <a ng-show="obj.state=='0'" ng-click="start(obj.id)" class="btn btn-primary btn-xs">启用</a>
-          <a ng-show="obj.state=='1'" ng-click="stop(obj.id)"  class="btn btn-success btn-xs">停用</a>
-          <a ng-show="obj.state=='0'" ng-href="#/activity/half/edit/{{obj.id}}" class="btn btn-warning btn-xs">编辑</a>
-          <a ng-show="obj.state=='1'" ng-href="#/activity/half/info/{{obj.id}}" class="btn btn-warning btn-xs">详情</a>
-          <a ng-href="#/line/freeorder/{{obj.code}}" class="btn btn-danger btn-xs">查看订单</a>
-      </td>
+      <td class="text-center">{{obj.sjminus}}</td>
     </tr>
   </tbody>
 </table>

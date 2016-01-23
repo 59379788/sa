@@ -20,7 +20,12 @@ angular.module('saApp')
     var freecancel = shoudong + "ac/wealfareService/admincancel";
 
     
+    //半价游订单列表
+    var halflist = zidong + "tc/half/orderlist";
+
+
     
+
     
 
     // Public API here
@@ -31,6 +36,9 @@ angular.module('saApp')
         },
         fcancel : function(){
         	return $resource(freecancel, {}, {});
+        },
+        hlist : function(){
+            return $resource(halflist, {}, {});
         }
       
     };

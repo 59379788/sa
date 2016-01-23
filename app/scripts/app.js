@@ -221,14 +221,12 @@ angular
         }
       })
 
-      //修改票种
+      //修改半价游产品信息
       .when('/activity/half/edit/:code', {
         templateUrl: 'views/activity/half/info.html',
         controller: 'actHalfinfoCtrl',
         controllerAs: 'acthalfinfo',
         resolve : {
-
-            
             info : function(activity){
                 return activity.halfinfo();
             },
@@ -241,7 +239,40 @@ angular
             type : function(){
                   return "edit";
             }
+        }
+      })
+
+      //半价游产品信息
+      .when('/activity/half/info/:code', {
+        templateUrl: 'views/activity/half/info.html',
+        controller: 'actHalfinfoCtrl',
+        controllerAs: 'acthalfinfo',
+        resolve : {
+            info : function(activity){
+                return activity.halfinfo();
+            },
+            edit : function(activity){
+                return activity.halfedit();
+            },
+            list : function(ticket){
+                return ticket.list();
+            },
+            type : function(){
+                  return "info";
+            }
+        }
+      })
+
+      //半价游订单信息
+      .when('/activity/half/orderlist', {
+        templateUrl: 'views/activity/half/orderlist.html',
+        controller: 'actHalfOrderListCtrl',
+        controllerAs: 'acthalforderlistCtrl',
+        resolve : {
             
+            list : function(order){
+                return order.hlist();
+            }
         }
       })
 
