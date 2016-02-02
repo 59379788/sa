@@ -272,6 +272,12 @@ angular
             
             list : function(order){
                 return order.hlist();
+            },
+            halflist : function(activity){
+                return activity.halflist();
+            },
+            getDate : function(common){
+                return common.getDate;
             }
         }
       })

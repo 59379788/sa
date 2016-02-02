@@ -12,12 +12,14 @@ angular.module('saApp').controller('LinefreeorderCtrl',
 		{title : "订单"}
 	];
 
+	$scope.searchform = {};
+
 	$scope.obj = {};
 
-
+	var para = angular.extend($scope.searchform, {code : code});
 
 	$scope.load = function(){
-		list.get({code : code}, function(res){
+		list.get(para, function(res){
 
 	     	console.log(res);
 
@@ -33,7 +35,6 @@ angular.module('saApp').controller('LinefreeorderCtrl',
     };
 
     $scope.load();
-
 
     /* 取消
      * ========================================= */
@@ -51,9 +52,5 @@ angular.module('saApp').controller('LinefreeorderCtrl',
             });
         }
     };
-    
-   
-
-
 
 });

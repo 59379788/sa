@@ -2,6 +2,23 @@
   <li ng-repeat="nav in navigation">{{nav.title}}</li>
 </ol>
 
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="form-group form-inline">
+            <div class="col-md-10">
+                <label>状态</label>&nbsp;&nbsp;
+                <select class="form-control" ng-model="searchform.state" >
+                  <option value=""> --全部-- </option>
+                  <option value="0"> 未支付 </option>
+                  <option value="1"> 已支付 </option>
+                </select>
+                 &nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-default" ng-click="load()">立即搜索</button>
+            </div>
+        </div>
+    </div>
+</div><!-- searchArea -->
+
 
 <table class="table table-bordered">
   <thead>

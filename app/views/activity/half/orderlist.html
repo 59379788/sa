@@ -5,11 +5,77 @@
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="form-group form-inline">
-            <div class="col-md-10">
-                <label>关键字</label>&nbsp;&nbsp;
-                <input type="text" class="form-control" ng-model="searchform.keyword" >
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <label>状态</label>&nbsp;&nbsp;
+            <div class="col-md-12">
+                <div class="row">
+                  <label>活动</label>&nbsp;&nbsp;
+                  <select class="form-control" ng-model="searchform.active_id" 
+                    ng-options="half.id as half.title for half in halfarr"
+                  >
+                    <option value=""> --全部-- </option>
+                  </select>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <label>报名时间</label>&nbsp;&nbsp;
+                  <div class="input-group">
+                  <input type="text" class="form-control" 
+                          datepicker-popup="{{format}}" 
+                          ng-model="dt1"
+                          datepicker-popup="yyyy-mm-dd"
+                          is-open="status1.opened" 
+                          min-date="minDate" 
+                          max-date="maxDate" 
+                          datepicker-options="dateOptions" 
+                          date-disabled="disabled(date, mode)" 
+                          ng-required="true" 
+                          close-text="Close" 
+                          placeholder="请输入开始时间" readonly/>
+                  <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" ng-click="open1($event)">
+                          <i class="glyphicon glyphicon-calendar"></i>
+                      </button>
+                  </span>
+                  </div>
+                        &nbsp;&nbsp;~&nbsp;&nbsp;            
+                  <div class="input-group">
+                  <input type="text" class="form-control" 
+                          datepicker-popup="{{format}}" 
+                          ng-model="dt2"
+                          datepicker-popup="yyyy-mm-dd"
+                          is-open="status2.opened" 
+                          min-date="minDate" 
+                          max-date="maxDate" 
+                          datepicker-options="dateOptions" 
+                          date-disabled="disabled(date, mode)" 
+                          ng-required="true" 
+                          close-text="Close" 
+                          placeholder="请输入结束时间" readonly/>
+                  <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" ng-click="open2($event)">
+                          <i class="glyphicon glyphicon-calendar"></i>
+                      </button>
+                  </span>
+                  </div> 
+                  &nbsp;&nbsp;
+                </div>
+
+                <div class="row mt10">
+                  <label>姓名</label>&nbsp;&nbsp;
+                  <input type="text" class="form-control" ng-model="searchform.name" >
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <label>电话</label>&nbsp;&nbsp;
+                  <input type="text" class="form-control" ng-model="searchform.mobile" >
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <label>身份证</label>&nbsp;&nbsp;
+                  <input type="text" class="form-control" ng-model="searchform.cardno" >
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-default" ng-click="load()">立即搜索</button>
+                </div>
+
+                
+
+
+
+                <!-- <label>状态</label>&nbsp;&nbsp;
                 <select class="form-control" ng-model="searchform.state" >
                   <option value=""> --全部-- </option>
                   <option value="0"> 停用 </option>
@@ -22,11 +88,8 @@
                   <option value="l"> 半价门票 </option>
                   <option value="t"> 半价线路 </option>
                 </select>
-                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <button type="button" class="btn btn-default" ng-click="load()">立即搜索</button>
-            </div>
-            <div class="col-md-2 text-right">
-                <button type="button" class="btn btn-info" ng-click="create()">发布半价游产品</button>
+                 &nbsp;&nbsp;&nbsp;&nbsp; -->
+                
             </div>
         </div>
     </div>
