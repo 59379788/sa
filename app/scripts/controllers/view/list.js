@@ -2,7 +2,7 @@
 
 
 angular.module('saApp').controller('ViewlistCtrl', 
-	function ($scope, $location, list, theme, start, stop) {
+	function ($scope, $location, list, theme, start, stop, ITEM_PER_PAGE, paixu) {
 
 	$scope.navigation = [
 		{title : "景区"},
@@ -29,7 +29,7 @@ angular.module('saApp').controller('ViewlistCtrl',
      * ========================================= */
     $scope.maxSize = 5;             //最多显示多少个按钮
     $scope.bigCurrentPage = 1;      //当前页码
-    $scope.itemsPerPage = 7         //每页显示几条
+    $scope.itemsPerPage = ITEM_PER_PAGE;         //每页显示几条
     
     $scope.load = function () {
         
@@ -100,6 +100,24 @@ angular.module('saApp').controller('ViewlistCtrl',
         }
     };
 
+
+    /* 排序
+     * ========================================= */
+    $scope.asort = function(code, asort){
+
+        paixu.get({code:code, asort:asort}, function(res){
+
+            console.log(res);
+
+            if(res.errcode === 0){
+                $scope.load();
+            }
+            else{
+                alert("停用失败");
+            }
+        });
+
+    };
 
 
 });

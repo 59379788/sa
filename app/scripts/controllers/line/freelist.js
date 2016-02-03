@@ -2,7 +2,7 @@
 
 
 angular.module('saApp').controller('LinefreelistCtrl', 
-	function ($scope, $location, list, start, stop) {
+	function ($scope, $location, list, start, stop, ITEM_PER_PAGE) {
 
 	$scope.navigation = [
 		{title : "线路"},
@@ -15,7 +15,7 @@ angular.module('saApp').controller('LinefreelistCtrl',
      * ========================================= */
     $scope.maxSize = 5;             //最多显示多少个按钮
     $scope.bigCurrentPage = 1;      //当前页码
-    $scope.itemsPerPage = 7         //每页显示几条
+    $scope.itemsPerPage = ITEM_PER_PAGE;         //每页显示几条
     
     $scope.load = function () {
         

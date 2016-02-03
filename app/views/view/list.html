@@ -47,17 +47,15 @@
     <tr ng-repeat="obj in objs">
       <td class="text-center">{{obj.theme_name}}</td>
       <td>{{obj.name}}</td>
-      <td class="col-md-2 ">
-          <!-- <form class="form-inline">
-            <div class="form-group">
-              <input class="form-control input-sm" type="text" value="{{obj.asort}}" >
-            </div>
-            <a ng-click="asort(obj.code)" class="btn btn-primary btn-xs">排序</a> 
-          </form>   --> 
-
-          <!-- <input class="form-control input-sm col-md-6" type="text" value="{{obj.asort}}" >
-          <a ng-click="asort(obj.code)" class="btn btn-primary btn-xs col-md-6">排序</a>  -->
-          
+      <td class="form-horizontal ">
+          <div class="col-sm-6">
+            <input class="form-control input-sm" 
+            style="height:22px;" 
+            type="text" 
+            value="{{obj.asort}}" 
+            ng-model="obj.asort">
+          </div>
+          <a ng-click="asort(obj.code, obj.asort)" class="btn btn-info btn-xs">gogo</a> 
       </td>
       <td class="text-center">{{obj._state}}</td>
       <td class="text-center">

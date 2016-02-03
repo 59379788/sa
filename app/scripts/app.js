@@ -21,6 +21,7 @@ angular
   ])
   .value("zidong",   "/api/as/")
   .value("shoudong", "/api/ac/")
+  .value("ITEM_PER_PAGE", 12)
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -119,6 +120,9 @@ angular
             },
             stop : function(view){
                 return view.stop();
+            },
+            paixu : function(view){
+                return view.asort();
             }
         }
       })

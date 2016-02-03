@@ -52,7 +52,7 @@ angular.module('saApp').controller('TicketcreateCtrl',
                 alert("数据获取失败");
                 return;
             }
-            else(res.errcode == 0)
+            else
             {
                 alert("添加成功");
                 $location.path("/ticket/edit/" + res.data);

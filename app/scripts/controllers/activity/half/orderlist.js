@@ -2,7 +2,7 @@
 
 
 angular.module('saApp').controller('actHalfOrderListCtrl', 
-	function ($scope, $location, list, halflist, getDate) {
+	function ($scope, $location, list, halflist, getDate, ITEM_PER_PAGE) {
 
 	$scope.navigation = [
 		{title : "活动"},
@@ -50,7 +50,7 @@ angular.module('saApp').controller('actHalfOrderListCtrl',
      * ========================================= */
     $scope.maxSize = 5;             //最多显示多少个按钮
     $scope.bigCurrentPage = 1;      //当前页码
-    $scope.itemsPerPage = 7;        //每页显示几条
+    $scope.itemsPerPage = ITEM_PER_PAGE;        //每页显示几条
 
     
     $scope.load = function () {

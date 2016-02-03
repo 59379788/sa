@@ -33,6 +33,9 @@ angular.module('saApp')
 
     //停用
     var stop = zidong + "tc/view/adminStop";
+
+    //排序
+    var asort = zidong + "tc/view/dlq";
     
     // Public API here
     return {
@@ -67,6 +70,9 @@ angular.module('saApp')
 	    },
         info : function(){
             return $resource(info, {}, {});
+        },
+        asort : function(){
+            return $resource(asort, {}, {});
         }
     };
 
