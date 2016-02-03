@@ -2,7 +2,7 @@
 
 
 angular.module('saApp').controller('TicketlistCtrl', 
-	function ($scope, $location, list, view, start, stop) {
+	function ($scope, $location, list, view, start, stop, startapp, stopapp) {
 
 	$scope.navigation = [
 		{title : "门票"},
@@ -10,6 +10,7 @@ angular.module('saApp').controller('TicketlistCtrl',
 	];
 
 	$scope.searchform = {};
+
 
 	/* 主题
      * ========================================= */
@@ -25,24 +26,16 @@ angular.module('saApp').controller('TicketlistCtrl',
         }
     });
     
-    /* 分页
-     * ========================================= */
-    $scope.maxSize = 5;             //最多显示多少个按钮
-    $scope.bigCurrentPage = 1;      //当前页码
-    $scope.itemsPerPage = 7         //每页显示几条
-    
     $scope.load = function () {
-        
-        var para = {
-            pageNo:$scope.bigCurrentPage, 
-            pageSize:$scope.itemsPerPage
-        };
 
-        para = angular.extend($scope.searchform, para);
-
-        console.log(para);
+        console.log($scope.searchform);
         
-        list.save(para, function(res){
+        list.save($scope.searchform, function(res){
+
+            /* 门票存储结构
+             * ========================================= */
+            var tkt = new Object();
+            var restkt = new Array();
 
          	console.log(res);
 
@@ -52,8 +45,37 @@ angular.module('saApp').controller('TicketlistCtrl',
          		return;
          	}
 
-         	$scope.objs = res.data.results;
-            $scope.bigTotalItems = res.data.totalRecord;
+         	//$scope.objs = res.data;
+            //$scope.bigTotalItems = res.data.totalRecord;
+
+
+            //用景区编号作为存储结构的属性，值是数组
+            for(var i = 0, j = res.data.length; i < j; i++)
+            {
+                var tt = res.data[i];
+                var v = tt.view;
+
+                if(!tkt.hasOwnProperty(v))
+                {
+                    tkt[v] = new Object();
+                    tkt[v].ticketarr = new Array();
+                    tkt[v].viewname = tt.view_name;
+                }
+                tkt[v].ticketarr.push(tt);
+            }
+
+            for(var key in tkt)
+            {
+                var o = tkt[key];
+                restkt.push(o);
+            }
+
+
+            console.log("------------");
+            console.log(restkt);
+            console.log("------------");
+
+            $scope.objs = restkt;
 
         });
 
@@ -92,6 +114,43 @@ angular.module('saApp').controller('TicketlistCtrl',
         
         if (confirm("停用该票种后将不能卖票，确定要停用吗 ？ ")) {
             stop.get({code:code}, function(res){
+                if(res.errcode === 0){
+                    $scope.load();
+                }
+                else{
+                    alert("停用失败");
+                }
+            });
+        }
+    };
+
+
+    /* 启用app
+     * ========================================= */
+    $scope.startapp = function(code){
+        
+        if (confirm("启用该票种后将不能编辑，确定要启用吗 ？ ")) {
+
+            startapp.get({code:code}, function(res){
+                console.log(res);
+                if(res.errcode === 0){
+                    $scope.load();
+                }
+                else{
+                    alert("启用失败");
+                }
+            });
+        }
+    };
+    
+    /* 停用app
+     * ========================================= */
+    $scope.stopapp = function(code){
+        
+        if (confirm("停用该票种后将不能卖票，确定要停用吗 ？ ")) {
+
+            stopapp.get({code:code}, function(res){
+                console.log(res);
                 if(res.errcode === 0){
                     $scope.load();
                 }

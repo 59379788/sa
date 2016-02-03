@@ -23,27 +23,34 @@
     </div>
 
     <div class="form-group">
+        <label class="col-md-2 control-label">票种编号</label>
+        <div class="col-md-10">
+            <input type="text" class="form-control" ng-model="obj.code" placeholder="必填" required>
+        </div>
+    </div>
+
+    <div class="form-group">
         <label class="col-md-2 control-label">有效期</label>
         <div class="col-md-10">
-             <!-- <input type="text" class="form-control" ng-model="obj.period"> -->
-            <div class="input-group">
-                <input type="text" class="form-control" 
-                        ng-model="dt1"
-                        datepicker-popup="yyyy-mm-dd"
-                        is-open="status1.opened" 
-                        min-date="minDate" 
-                        max-date="maxDate" 
-                        datepicker-options="dateOptions" 
-                        date-disabled="disabled(date, mode)" 
-                        ng-required="true" 
-                        close-text="Close" 
-                        placeholder="请输入开始时间" readonly/>
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="open1($event)">
-                        <i class="glyphicon glyphicon-calendar"></i>
-                    </button>
-                </span>
-            </div>
+                <div class="input-group">
+                  <input type="text" class="form-control" 
+                          datepicker-popup="{{format}}" 
+                          ng-model="dt1"
+                          datepicker-popup="yyyy-mm-dd"
+                          is-open="status1.opened" 
+                          min-date="minDate" 
+                          max-date="maxDate" 
+                          datepicker-options="dateOptions" 
+                          date-disabled="disabled(date, mode)" 
+                          ng-required="true" 
+                          close-text="Close" 
+                          placeholder="请输入开始时间" readonly/>
+                  <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" ng-click="open1($event)">
+                          <i class="glyphicon glyphicon-calendar"></i>
+                      </button>
+                  </span>
+                </div>
         </div>
     </div>
 

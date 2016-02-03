@@ -15,7 +15,7 @@
                   </select>
                   &nbsp;&nbsp;&nbsp;&nbsp;
 
-                  <label>报名时间</label>&nbsp;&nbsp;
+                  <label>使用时间</label>&nbsp;&nbsp;
                   <div class="input-group">
                   <input type="text" class="form-control" 
                           datepicker-popup="{{format}}" 
@@ -101,24 +101,22 @@
     <tr>
       <th class="col-md-2 text-center">下单时间</th>
       <th class="text-center">半价产品名称</th>
-      <th class="col-md-1 text-center">用户号</th>
+      <th class="text-center">旅行社名称</th>
       <th class="col-md-1 text-center">游客姓名</th>
       <th class="col-md-1 text-center">电话</th>
       <th class="col-md-1 text-center">身份证</th>
-      <th class="col-md-1 text-center">最高立减</th>
-      <th class="col-md-1 text-center">实际立减</th>
+      <th class="col-md-1 text-center">立减</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="obj in objs">
-      <td class="text-center">{{obj.dtime}}</td>
-      <td>{{obj.title}}</td>
-      <td class="text-center">{{obj.user_code}}</td>
+      <td class="text-center">{{obj.used_time}}</td>
+      <td class="text-center">{{obj.ticket_name}}</td>
+      <td class="text-center">{{obj.ta_name}}</td>
       <td class="text-center">{{obj.name}}</td>
       <td class="text-center">{{obj.mobile}}</td>
       <td class="text-center">{{obj.cardno}}</td>
-      <td class="text-center">{{obj.minus}}</td>
-      <td class="text-center">{{obj.sjminus}}</td>
+      <td class="text-center">{{obj.rebate}}</td>
     </tr>
   </tbody>
 </table>

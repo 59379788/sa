@@ -13,6 +13,14 @@
                   <option value="1"> 已支付 </option>
                 </select>
                  &nbsp;&nbsp;&nbsp;&nbsp;
+
+                <label>是否取消</label>&nbsp;&nbsp;
+                <select class="form-control" ng-model="searchform.del_flg" >
+                  <option value=""> --全部-- </option>
+                  <option value="0"> 未取消 </option>
+                  <option value="1"> 已取消 </option>
+                </select>
+                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <button type="button" class="btn btn-default" ng-click="load()">立即搜索</button>
             </div>
         </div>

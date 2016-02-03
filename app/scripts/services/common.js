@@ -38,13 +38,9 @@ angular.module('saApp')
 
     		var regEx = new RegExp("\\-","gi");
     		d=d.replace(regEx,"/");
-    		alert(d);
     		var milliseconds=Date.parse(d);
-		    alert(milliseconds)
 		    var dependedDate=new Date();
 		    dependedDate.setTime(milliseconds);
-
-		    alert(dependedDate);
 
 		    return dependedDate;
 

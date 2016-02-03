@@ -44,6 +44,12 @@ angular
             },
             stop : function(ticket){
                 return ticket.stop();
+            },
+            startapp : function(ticket){
+                return ticket.startapp();
+            },
+            stopapp : function(ticket){
+                return ticket.stopapp();
             }
         }
       })

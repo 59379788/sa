@@ -16,10 +16,16 @@ angular.module('saApp').controller('LinefreeorderCtrl',
 
 	$scope.obj = {};
 
-	var para = angular.extend($scope.searchform, {code : code});
+
+
 
 	$scope.load = function(){
-		list.get(para, function(res){
+
+		var para = angular.extend($scope.searchform, {code : code});
+
+		console.log(para);
+
+		list.save(para, function(res){
 
 	     	console.log(res);
 
