@@ -21,7 +21,7 @@ angular.module('saApp').controller('ViewcreateCtrl', function ($scope, create, t
         if(res.errcode === 0)
         {
         	$scope.themearr = res.data;
-        	$scope.obj.theme = res.data[0].theme;
+        //	$scope.obj.theme = res.data[0].theme;
         }
         else
         {

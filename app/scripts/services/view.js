@@ -17,13 +17,16 @@ angular.module('saApp')
     var slist = zidong + "tc/view/adminViewForTicketList";
 
     //新建景区
-    var create = zidong + "";
+    var create = zidong + "tc/view/create";
 
     //修改景区信息
-    var edit = zidong + "";
+    var edit = zidong + "tc/view/edit";
 
     //删除景区
     var del = zidong + "";
+
+    //景区信息
+    var info = zidong + "tc/view/adminInfo";
 
     //启用
     var start = zidong + "tc/view/adminStart";
@@ -61,7 +64,10 @@ angular.module('saApp')
 				deferred.reject(data);   // 声明执行失败，即服务器返回错误  
 			});  
 			return deferred.promise;   // 返回承诺，这里并不是最终数据，而是访问最终数据的API 
-	    }
+	    },
+        info : function(){
+            return $resource(info, {}, {});
+        }
     };
 
   });

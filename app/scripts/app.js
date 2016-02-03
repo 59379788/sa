@@ -16,7 +16,8 @@ angular
     'ngRoute',
 //    'ngSanitize',
 //    'ngTouch'
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'angularFileUpload'
   ])
   .value("zidong",   "/api/as/")
   .value("shoudong", "/api/ac/")
@@ -132,6 +133,44 @@ angular
             },
             create : function(view){
                 return view.create();
+            }
+        }
+      })
+
+
+      //修改景区
+      .when('/view/edit/:code', {
+        templateUrl: 'views/view/info.html',
+        controller: 'ViewinfoCtrl',
+        controllerAs: 'viewinfo',
+        resolve : {
+            info : function(view){
+                return view.info();
+            },
+            edit : function(view){
+                return view.edit();
+            },
+            type : function(){
+                  return "edit";
+            }
+        }
+      })
+
+
+      //景区信息
+      .when('/view/info/:code', {
+        templateUrl: 'views/view/info.html',
+        controller: 'ViewinfoCtrl',
+        controllerAs: 'viewinfo',
+        resolve : {
+            info : function(view){
+                return view.info();
+            },
+            edit : function(view){
+                return view.edit();
+            },
+            type : function(){
+                  return "info";
             }
         }
       })
