@@ -55,20 +55,10 @@ angular.module('saApp').controller('TicketinfoCtrl',
             return;
         }
 
-        //res.data.period = getDateObj(res.data.period);
-
         $scope.dt1 = getDateObj(res.data.period);
-
-        //alert(res.data.period);
-
-        //console.log(res.data.period);
-        
-        //res.data.period = new Date();
 
         $scope.obj = res.data;
         
-
-        //console.log($scope.obj);
     });
     
 

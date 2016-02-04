@@ -108,6 +108,7 @@ angular.module('saApp').controller('ViewlistCtrl',
         paixu.get({code:code, asort:asort}, function(res){
 
             console.log(res);
+            
 
             if(res.errcode === 0){
                 $scope.load();
