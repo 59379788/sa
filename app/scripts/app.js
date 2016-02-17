@@ -332,6 +332,35 @@ angular
       })
 
 
+
+
+      //门票
+      .when('/ticket/sale', {
+        templateUrl: 'views/ticket/salelist.html',
+        controller: 'SalelistCtrl',
+        resolve : {
+            view : function(view){
+                return view.slist;
+            },
+            tkttypelist : function(ticket){
+                return ticket.list();
+            },
+            talist : function(ta){
+                return ta.list();
+            },
+            stblist : function(stb){
+                return stb.list();
+            },
+            salelist : function(ticket){
+                return ticket.salelist();
+            },
+            getDate : function(common){
+                return common.getDate;
+            }
+        }
+      })
+
+
       
 
       .otherwise({

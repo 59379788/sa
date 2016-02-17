@@ -1,0 +1,173 @@
+<ol class="breadcrumb" >
+  <li ng-repeat="nav in navigation">{{nav.title}}</li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="form-group form-inline">
+            <div class="col-md-12">
+              <div class="row">
+                <label>使用时间</label>&nbsp;&nbsp;
+                <div class="input-group">
+                <input type="text" class="form-control" 
+                        datepicker-popup="{{format}}" 
+                        ng-model="dt1"
+                        datepicker-popup="yyyy-mm-dd"
+                        is-open="status1.opened" 
+                        min-date="minDate" 
+                        max-date="maxDate" 
+                        datepicker-options="dateOptions" 
+                        date-disabled="disabled(date, mode)" 
+                        ng-required="true" 
+                        close-text="Close" 
+                        placeholder="请输入开始时间" readonly/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open1($event)">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+                </div>
+                      &nbsp;&nbsp;~&nbsp;&nbsp;            
+                <div class="input-group">
+                <input type="text" class="form-control" 
+                        datepicker-popup="{{format}}" 
+                        ng-model="dt2"
+                        datepicker-popup="yyyy-mm-dd"
+                        is-open="status2.opened" 
+                        min-date="minDate" 
+                        max-date="maxDate" 
+                        datepicker-options="dateOptions" 
+                        date-disabled="disabled(date, mode)" 
+                        ng-required="true" 
+                        close-text="Close" 
+                        placeholder="请输入结束时间" readonly/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open2($event)">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+                </div>
+                &nbsp;&nbsp;
+
+                <label>类别</label>&nbsp;&nbsp;
+                <select class="form-control" ng-model="searchform.usetype">
+                  <option value=1> 使用 </option>
+                  <option value=2> 退票 </option>
+                  <option value=3> 未使用 </option>
+                  <option value=999> --全部-- </option>
+                </select>
+                &nbsp;&nbsp;
+
+              </div>
+              <div class="row mt10">
+
+                <label>景区</label>&nbsp;&nbsp;
+                <select 
+                class="form-control" 
+                ng-model="searchform.view" 
+                ng-change="viewchange(searchform.view)"
+                ng-options="view.code as view.name for view in viewarr"
+                >
+                  <option value=""> --全部-- </option>
+                </select>
+                &nbsp;&nbsp;
+
+                <label>票种</label>&nbsp;&nbsp;
+                <select class="form-control" ng-model="searchform.tkttype" 
+                  ng-options="tkttype.code as tkttype.name for tkttype in tkttypearr"
+                >
+                  <option value=""> --全部-- </option>
+                </select>
+                &nbsp;&nbsp;
+
+                <label>旅行社</label>&nbsp;&nbsp;
+                <select class="form-control" 
+                ng-model="searchform.ta" 
+                ng-change="tachange(searchform.ta)" 
+                  ng-options="ta1.code as ta1.name for ta1 in taarr"
+                >
+                  <option value=""> --全部-- </option>
+                </select>
+                &nbsp;&nbsp;
+
+                <label>同业社</label>&nbsp;&nbsp;
+                <select class="form-control" ng-model="searchform.stb" 
+                  ng-options="stb.code as stb.stb for stb in stbarr"
+                >
+                  <option value=""> --全部-- </option>
+                </select>
+                &nbsp;&nbsp;
+              </div>
+
+             
+
+
+
+              <div class="row mt10">
+                <label>姓名</label>&nbsp;&nbsp;
+                <input type="text" class="form-control" ng-model="searchform.name" >
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <label>电话</label>&nbsp;&nbsp;
+                <input type="text" class="form-control" ng-model="searchform.mobile" >
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <label>身份证</label>&nbsp;&nbsp;
+                <input type="text" class="form-control" ng-model="searchform.cardno" >
+                &nbsp;&nbsp;&nbsp;&nbsp;
+
+                共 {{bigTotalItems}} 条数据
+
+                <button type="button" class="btn pull-right btn-success" ng-click="load()">立即搜索</button>
+              </div>
+
+            </div> 
+          </div>
+        </div>
+    </div>
+</div><!-- searchArea -->
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th class="col-md-2 text-center">操作时间</th>
+      <th class="text-center">票种</th>
+      <th class="col-md-1 text-center">票码</th>
+      <th class="col-md-1 text-center">姓名</th>
+      <th class="col-md-1 text-center">电话</th>
+      <th class="col-md-1 text-center">身份证</th>
+      <th class="col-md-1 text-center">旅行社</th>
+      <th class="col-md-1 text-center">同业社</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="obj in objs" 
+    ng-class="{'success' : (searchform.usetype==999 && obj.state==0 && obj.used==1) , 'danger' : (searchform.usetype==999 && obj.state==0 && obj.back==1)}"  
+    >
+      <td class="text-center">{{obj.otime}}</td>
+      <td class="text-center">{{obj.tname}}</td>
+      <td class="text-center">{{obj.code}}</td>
+      <td class="text-center">{{obj.uname}}</td>
+      <td class="text-center">{{obj.mobile}}</td>
+      <td class="text-center">'{{obj.cardno}}</td>
+      <td class="text-center">{{obj.taname}}</td>
+      <td class="text-center">{{obj.stb}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="text-right">
+    <pagination items-per-page="itemsPerPage" 
+                total-items="bigTotalItems" 
+                ng-model="bigCurrentPage" 
+                max-size="maxSize" 
+                class="pagination-sm" 
+                boundary-links="true" 
+                rotate="false" 
+                num-pages="numPages" 
+                previous-text="上一页"
+                next-text="下一页"
+                first-text="首页"
+                last-text="末页"
+                ng-change="load()"></pagination>
+</div>
