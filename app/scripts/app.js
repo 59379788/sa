@@ -1,5 +1,34 @@
 'use strict';
 
+
+// (function(document,$,angular){
+//   angular.element(document).ready(function() {
+//     alert("wahahahahahahahahahahahahahahaha");
+//     // $.ajax({
+//     //   url: '/api/get_user_permission',
+//     //   type: "GET",
+//     //   dataType: 'json'
+//     // }).then(function(data){
+//         var data = {};
+//         data.permissions = ["dlq1", "dlq2", "dlq3", "dlq4"];
+
+//         console.log(data.permissions);
+
+//         for (var i = 0; i < data.permissions.length; i++) {
+//           data.permissions[i] = data.permissions[i].replace(/\s/g,"");
+//         };
+//         angular.module('saApp').run(['$rootScope', function($rootScope){
+//           $rootScope.userPermissionList = data.permissions;
+//           console.log("---------------------");
+//           console.log($rootScope);
+//           console.log($rootScope.userPermissionList);
+//         }]);
+//         angular.bootstrap(document, ['saApp']);
+//     //});
+//   });
+// })(document,jQuery,angular);
+
+
 /**
  * @ngdoc overview
  * @name saApp
@@ -17,6 +46,7 @@ angular
 //    'ngSanitize',
 //    'ngTouch'
     'ui.bootstrap',
+//    'angular.permission',
     'angularFileUpload'
   ])
   .value("zidong",   "/api/as/")
@@ -371,3 +401,4 @@ angular
   .config(function($httpProvider) {
     $httpProvider.interceptors.push('httpInjector');
   });
+

@@ -40,16 +40,11 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
 
-            <li class="dropdown">
+            <li class="dropdown" has-permission='dlq6'>
               <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 门票 <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#/ticket/search">查询票码</a></li>
                 <li><a href="#/ticket/list">列表</a></li>
                 <li><a href="#/ticket/sale">使用情况</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
               </ul>
             </li>
 
@@ -146,6 +141,8 @@
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    
+
     <script src="scripts/app.js"></script>
 
     <script src="scripts/controllers/main.js"></script>
