@@ -1,32 +1,47 @@
 'use strict';
 
 
-// (function(document,$,angular){
-//   angular.element(document).ready(function() {
-//     alert("wahahahahahahahahahahahahahahaha");
-//     // $.ajax({
-//     //   url: '/api/get_user_permission',
-//     //   type: "GET",
-//     //   dataType: 'json'
-//     // }).then(function(data){
-//         var data = {};
-//         data.permissions = ["dlq1", "dlq2", "dlq3", "dlq4"];
+(function(document,$,angular){
+  var dlq = angular.element(document).ready(function() {
+    
+    // $.ajax({
+    //   url: '/api/get_user_permission',
+    //   type: "GET",
+    //   dataType: 'json'
+    // }).then(function(data){
+        var data = {};
+        data.permissions = ["dlq1", "dlq2", "dlq3", "dlq4"];
 
-//         console.log(data.permissions);
+        for (var i = 0; i < data.permissions.length; i++) {
+          data.permissions[i] = data.permissions[i].replace(/\s/g,"");
+        };
+        angular.module('saApp').run(['$rootScope','$location','angularPermission', function($rootScope,$location,angularPermission){
 
-//         for (var i = 0; i < data.permissions.length; i++) {
-//           data.permissions[i] = data.permissions[i].replace(/\s/g,"");
-//         };
-//         angular.module('saApp').run(['$rootScope', function($rootScope){
-//           $rootScope.userPermissionList = data.permissions;
-//           console.log("---------------------");
-//           console.log($rootScope);
-//           console.log($rootScope.userPermissionList);
-//         }]);
-//         angular.bootstrap(document, ['saApp']);
-//     //});
-//   });
-// })(document,jQuery,angular);
+          $rootScope.userPermissionList = data.permissions;
+
+          angularPermission.setPermissions($rootScope.userPermissionList);
+
+          $rootScope.$on('$routeChangeStart', function(event, next, current) {
+            var permission = next.$$route.permission;
+            if(angular.isString(permission) && !angularPermission.hasPermission(permission)){
+              // here I redirect page to '/unauthorized',you can edit it
+              $location.path('/unauthorized');
+            }
+          });
+
+
+        }]);
+
+        angular.bootstrap(document, ['saApp']);
+
+    //});
+  })
+
+  ;
+
+
+})(document,jQuery,angular);
+
 
 
 /**
@@ -46,13 +61,14 @@ angular
 //    'ngSanitize',
 //    'ngTouch'
     'ui.bootstrap',
-//    'angular.permission',
+    'angular.permission',
     'angularFileUpload'
   ])
   .value("zidong",   "/api/as/")
   .value("shoudong", "/api/ac/")
   .value("ITEM_PER_PAGE", 12)
   .config(function ($routeProvider) {
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',

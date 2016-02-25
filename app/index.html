@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="saApp">
+  <body >
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -40,10 +40,10 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
 
-            <li class="dropdown" has-permission='dlq6'>
+            <li class="dropdown" has-permission='dlq1'>
               <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 门票 <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#/ticket/list">列表</a></li>
+                <li><a href="#/ticket/list" has-permission='dlq1'>列表</a></li>
                 <li><a href="#/ticket/sale">使用情况</a></li>
               </ul>
             </li>
@@ -157,6 +157,8 @@
     <script src="scripts/services/ta.js"></script>
     <script src="scripts/services/stb.js"></script>
     <script src="scripts/services/httpinjector.js"></script>
+
+    <script src="scripts/services/angular.permission.js"></script>
 
     <!-- 票务控制器 -->
     <script src="scripts/controllers/ticket/list.js"></script>

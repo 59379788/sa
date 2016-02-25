@@ -4,32 +4,35 @@
  * No dependence
  */
 
-angular.module('saApp', ['ngRoute'])
+angular.module('angular.permission', ['ngRoute'])
 
-  // .config(['$httpProvider', function($httpProvider) {
-  //     $httpProvider.interceptors.push('httpResponsePermissionInterceptor');
-  //     //$httpProvider.interceptors.push('httpInjector');
-  //   }
-  // ])
+  .config(['$httpProvider', function($httpProvider) {
+      $httpProvider.interceptors.push('httpResponsePermissionInterceptor');
+    }
+  ])
 
   /**
    * if route change then check if user has permission
    */
-//   .run(['$rootScope','$location','angularPermission', 
-//     function($rootScope,$location,angularPermission){
-      
-//     angularPermission.setPermissions($rootScope.userPermissionList);
-// console.log($rootScope);
-//     alert($rootScope.userPermissionList);
+  // .run(['$rootScope','$location','angularPermission', function($rootScope,$location,angularPermission){
+  //   var hehe = {};
+  //   console.log(hehe);
 
-//     $rootScope.$on('$routeChangeStart', function(event, next, current) {
-//       var permission = next.$$route.permission;
-//       if(angular.isString(permission) && !angularPermission.hasPermission(permission)){
-//         // here I redirect page to '/unauthorized',you can edit it
-//         $location.path('/unauthorized');
-//       }
-//     });
-//   }])
+  //   console.log("angularPermission");
+  //   console.log($rootScope);
+  //   console.log($rootScope.hasOwnProperty('userPermissionList'));
+    
+  //   console.log($rootScope.userPermissionList);
+  //   angularPermission.setPermissions($rootScope.userPermissionList);
+
+  //   $rootScope.$on('$routeChangeStart', function(event, next, current) {
+  //     var permission = next.$$route.permission;
+  //     if(angular.isString(permission) && !angularPermission.hasPermission(permission)){
+  //       // here I redirect page to '/unauthorized',you can edit it
+  //       $location.path('/unauthorized');
+  //     }
+  //   });
+  // }])
 
   /**
    * factory service provide permission data set and check
@@ -39,6 +42,7 @@ angular.module('saApp', ['ngRoute'])
     return {
       setPermissions: function(permissions) {
         console.log("setPermissions");
+        console.log(permissions);
         userPermissionList = permissions;
         $rootScope.$broadcast('permissionsChanged')
       },
@@ -62,8 +66,6 @@ angular.module('saApp', ['ngRoute'])
         if(!angular.isString(attrs.hasPermission))
           throw "hasPermission value must be a string, 你懂了吗亲?";
         var value = attrs.hasPermission.trim();
-
-        alert(value);
         var notPermissionFlag = value[0] === '!';
         if(notPermissionFlag) {
           value = value.slice(1).trim();
